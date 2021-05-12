@@ -8,7 +8,6 @@ RUN apk update \
     && rm -rf /var/cache/apk/* /tmp/* /usr/share/man
 
 COPY apache/* /etc/apache2/
-COPY conf.d/* /etc/php7/conf.d/
 
 ENTRYPOINT [ "httpd", "-D", "FOREGROUND" ]
 
