@@ -1,0 +1,19 @@
+name: Build image and push to Docker Hub
+
+on:
+  push:
+    branches:
+      - '7.3'
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Build
+        uses: docker/build-push-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          push: true
+          tags: rshop/php-apache:7.3,rshop/php-apache:latest
