@@ -1,9 +1,9 @@
 name: Build image and push to Docker Hub
 
-on:
-  push:
-    branches:
-      - '7.3-mssql'
+on: [push, workflow_dispatch, repository_dispatch]
+
+env:
+  BRANCH: '7.3-mssql'
 
 jobs:
   docker:
@@ -16,8 +16,16 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
+        name: Build latest
+        if: ${{ env.BRANCH == '7.3' }}
+        uses: docker/build-push-action@v2
+        with:
+          context: ./base
+          push: true
+          tags: rshop/php-apache:latest
+      -
         name: Build and push
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: rshop/php-apache:7.3-mssql
+          tags: rshop/php-apache:${{ env.BRANCH }}
