@@ -1,9 +1,9 @@
-FROM rshop/php:8.0-mssql-xdebug
+FROM rshop/php:8.1-mssql-xdebug
 
 RUN apk update \
     && apk add --no-cache \
         apache2 \
-        php8-apache2 \
+        php81-apache2 \
     && apk del --purge *-dev \
     && rm -rf /var/cache/apk/* /tmp/* /usr/share/man
 
