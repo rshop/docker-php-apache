@@ -1,4 +1,4 @@
-FROM rshop/php:8.1-mssql
+FROM rshop/php:8.3-mssql
 
 RUN apk update \
     && apk add --no-cache \
