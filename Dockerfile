@@ -1,4 +1,4 @@
-FROM rshop/php:8.1-mssql-xdebug
+FROM rshop/php:8.3-mssql-xdebug
 
 RUN apk update \
     && apk add --no-cache \
