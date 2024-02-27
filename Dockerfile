@@ -1,4 +1,4 @@
-FROM rshop/php:8.3
+FROM rshop/php:8.3-xdebug
 
 RUN apk update \
     && apk add --no-cache \
